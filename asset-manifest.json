@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/deev-voice-over-website/static/css/main.92d33f39.chunk.css",
-    "main.js": "/deev-voice-over-website/static/js/main.efc1b482.chunk.js",
-    "main.js.map": "/deev-voice-over-website/static/js/main.efc1b482.chunk.js.map",
-    "runtime-main.js": "/deev-voice-over-website/static/js/runtime-main.2d5a77f8.js",
-    "runtime-main.js.map": "/deev-voice-over-website/static/js/runtime-main.2d5a77f8.js.map",
-    "static/js/2.608fec79.chunk.js": "/deev-voice-over-website/static/js/2.608fec79.chunk.js",
-    "static/js/2.608fec79.chunk.js.map": "/deev-voice-over-website/static/js/2.608fec79.chunk.js.map",
-    "static/js/3.ef9c174b.chunk.js": "/deev-voice-over-website/static/js/3.ef9c174b.chunk.js",
-    "static/js/3.ef9c174b.chunk.js.map": "/deev-voice-over-website/static/js/3.ef9c174b.chunk.js.map",
+    "main.css": "/deev-voice-over-website/static/css/main.6f28007d.chunk.css",
+    "main.js": "/deev-voice-over-website/static/js/main.19c37fb2.chunk.js",
+    "main.js.map": "/deev-voice-over-website/static/js/main.19c37fb2.chunk.js.map",
+    "runtime-main.js": "/deev-voice-over-website/static/js/runtime-main.33053b81.js",
+    "runtime-main.js.map": "/deev-voice-over-website/static/js/runtime-main.33053b81.js.map",
+    "static/js/2.7d276ab6.chunk.js": "/deev-voice-over-website/static/js/2.7d276ab6.chunk.js",
+    "static/js/2.7d276ab6.chunk.js.map": "/deev-voice-over-website/static/js/2.7d276ab6.chunk.js.map",
+    "static/js/3.65043380.chunk.js": "/deev-voice-over-website/static/js/3.65043380.chunk.js",
+    "static/js/3.65043380.chunk.js.map": "/deev-voice-over-website/static/js/3.65043380.chunk.js.map",
     "index.html": "/deev-voice-over-website/index.html",
-    "static/css/main.92d33f39.chunk.css.map": "/deev-voice-over-website/static/css/main.92d33f39.chunk.css.map",
-    "static/js/2.608fec79.chunk.js.LICENSE.txt": "/deev-voice-over-website/static/js/2.608fec79.chunk.js.LICENSE.txt",
+    "static/css/main.6f28007d.chunk.css.map": "/deev-voice-over-website/static/css/main.6f28007d.chunk.css.map",
+    "static/js/2.7d276ab6.chunk.js.LICENSE.txt": "/deev-voice-over-website/static/js/2.7d276ab6.chunk.js.LICENSE.txt",
     "static/media/App.css": "/deev-voice-over-website/static/media/vivaldi.e21f6a5f.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.2d5a77f8.js",
-    "static/js/2.608fec79.chunk.js",
-    "static/css/main.92d33f39.chunk.css",
-    "static/js/main.efc1b482.chunk.js"
+    "static/js/runtime-main.33053b81.js",
+    "static/js/2.7d276ab6.chunk.js",
+    "static/css/main.6f28007d.chunk.css",
+    "static/js/main.19c37fb2.chunk.js"
   ]
 }
