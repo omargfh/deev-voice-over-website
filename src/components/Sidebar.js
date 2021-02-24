@@ -16,12 +16,38 @@ class Sidebar extends React.Component {
                 </div>
             )
         }
-        return (
-            <nav className="sidebar">
-                <div className="sidebarSticky">
-                    {pages}
+        let accounts = ""
+        if (this.props.USERNAME !== null) {
+            accounts = (
+                <div id="account-logged">
+                    <a href="#">{this.props.USERNAME}</a>
+                    <img src={`${process.env.PUBLIC_URL}/img/wave.png`}/>
                 </div>
-            </nav>
+            )
+        }
+        else {
+            accounts = (
+                <React.Fragment>
+                    <div id="account-signin">
+                        <a href="#">Sign In</a>
+                        <img src={`${process.env.PUBLIC_URL}/img/wave.png`}/>
+                    </div>
+                    <div id="account-signup">
+                        <a href="#">Sign Up</a>
+                        <img src={`${process.env.PUBLIC_URL}/img/wave.png`}/>
+                    </div>
+                </React.Fragment>
+            )
+        }
+        return (
+            <header>
+                <nav className="sidebar">
+                    {pages}
+                </nav>
+                <div className="accounts">
+                    {accounts}
+                </div>
+            </header>
         )
     }
 }

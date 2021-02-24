@@ -34,10 +34,16 @@
 
 /* Base CSS */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 html,
 body {
     padding: 0;
     margin: 0;
+    overflow-x: hidden;
 }
 
 .animate-5 {
@@ -67,48 +73,51 @@ body {
 }
 
 
-/* Grid Container */
-
-.App {
-    display: grid;
-    grid-template-areas: 'sidebar content';
-    grid-template-columns: calc(100vh / 6) auto;
-    grid-gap: 0;
-}
-
-
 /* Background */
 
 .background-image {
     position: absolute;
     display: flex;
-    width: calc(100% + (100vh/6));
-    height: 100%;
+    width: 100%;
+    /* height: 100%; */
     min-height: 400px;
     overflow: hidden;
-    left: calc(( -100vh/ 6));
+    left: 0;
     z-index: -1;
 }
 
+.background-sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+}
+
 .background-image img {
-    width: auto;
+    min-height: 100%;
+    max-width: 100%;
+}
+
+@media (max-width: 997px) {
+    .background-image {
+        display: flex;
+        justify-content: center;
+    }
+    .background-image img {
+        max-width: unset;
+    }
 }
 
 
 /* Sidebar */
 
 .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
     grid-area: sidebar;
     display: grid;
     height: 100vh;
-    overflow-y: hidden;
-}
-
-.sidebarSticky {
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    z-index: 2;
+    z-index: 20;
 }
 
 .sidebar .sidebarElement {
@@ -125,7 +134,7 @@ body {
 
 .sidebar .sidebarElement a {
     font-family: 'Building', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.7em;
     text-decoration: none;
     text-transform: uppercase;
     color: #ffffff;
@@ -174,12 +183,254 @@ body {
 }
 
 
+/* Accounts */
+
+.accounts {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 1.2rem 2.5rem;
+    z-index: 20;
+}
+
+.accounts div {
+    position: relative;
+    display: inline-block;
+}
+
+.accounts img {
+    width: 130%;
+    height: 100%;
+    position: absolute;
+    bottom: calc(-60%);
+    left: calc(50% + 2.5rem);
+    margin-left: calc(-82%);
+    transform: scaleX(-1);
+    filter: brightness(0.9);
+}
+
+.accounts a {
+    font-family: 'Building', sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    margin-left: 3rem;
+    font-size: 1.7em;
+}
+
+.accounts div:hover img {
+    filter: brightness(1);
+    cursor: pointer;
+}
+
+@media (max-height: 397px) {
+    .sidebar {
+        height: fit-content;
+        width: 100%;
+        bottom: 0;
+        top: unset;
+        display: block;
+        backdrop-filter: blur(20px) brightness(95%);
+    }
+    .sidebar .sidebarElement {
+        display: inline-block;
+        height: 100%;
+        padding: 0.5rem 0;
+        width: calc(20vw - 2.5px);
+        overflow: unset;
+        border-left: 2px;
+    }
+    .sidebar .sidebarElement a {
+        display: inline-block;
+        text-align: center;
+    }
+    .sidebar .sidebarBreak {
+        display: none;
+    }
+}
+
+
 /* Pages */
 
 .page {
-    width: 100%;
-    height: 100%;
+    width: calc(100% - (100vh /6));
+    padding-left: calc(100vh/6);
+    min-height: 100vh;
+    height: fit-content;
     position: relative;
+    box-sizing: content-box;
+}
+
+.content {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.content::before {
+    content: '';
+    display: block;
+    height: calc((1.6 * 1.7em));
+    width: 100%;
+}
+
+@media (max-height: 397px) {
+    .page {
+        width: 100%;
+        padding-left: 0;
+    }
+}
+
+
+/* Logo */
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.logoText {
+    position: relative;
+}
+
+.logoMain {
+    font-family: 'Allura', cursive;
+    font-size: 10em;
+    color: white;
+    font-weight: 100;
+    text-shadow: 0 0 8px #bdb1b2d7;
+    display: inline-block;
+}
+
+.logoHeadline {
+    font-family: 'Moon-Light', sans-serif;
+    font-weight: 100;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: white;
+    position: absolute;
+    bottom: 1.8rem;
+    left: 4rem;
+}
+
+.logoImage {
+    width: 10em;
+    display: inline-block;
+}
+
+
+/* Home Cards */
+
+.col-md-4,
+.col-md-8 {
+    padding: 0
+}
+
+.homeCard {
+    background: rgba(96, 70, 70, 0.75);
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.homeCard-Image {
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 90%;
+    height: 130px;
+    overflow: hidden;
+}
+
+.homeCard-Image img {
+    width: 100%;
+}
+
+.homeCard-Text {
+    font-family: 'Moon-Light', serif;
+    letter-spacing: 0.2em;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.homeCard h2 {
+    font-family: "Building", monospace;
+    letter-spacing: 0.8rem;
+    font-size: 1.7em;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 100;
+}
+
+.homeCard h3 {
+    font-size: 1.2em;
+}
+
+.homeCard p {
+    font-size: 0.5em;
+    text-align: justify;
+}
+
+.homeCard .red,
+.red>a {
+    color: #ff4c4c;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+
+/* Carousel */
+
+.carousel {
+    width: 70%;
+}
+
+
+/* Responsive */
+
+@media (max-width: 997px) {
+    /* Sidebar */
+    .sidebar {
+        display: none;
+    }
+    .accounts {
+        display: none;
+    }
+    /* General Page */
+    .page {
+        width: 100%;
+        padding-left: 0;
+    }
+    .content::before {
+        content: '';
+        display: block;
+        height: calc((2.5 * 1.7em));
+        width: 100%;
+    }
+    /* Cards */
+    #about-card {
+        justify-content: center;
+        width: 100%;
+    }
+    .homeCard {
+        width: 100%
+    }
 }
 
 
