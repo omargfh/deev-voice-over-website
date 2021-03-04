@@ -80,7 +80,9 @@ body {
 /* Background */
 
 .background-image {
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     width: 100%;
     /* height: 100%; */
@@ -99,6 +101,7 @@ body {
 .background-image img {
     min-height: 100%;
     max-width: 100%;
+    width: 100%;
 }
 
 @media (max-width: 997px) {
@@ -108,6 +111,7 @@ body {
     }
     .background-image img {
         max-width: unset;
+        width: unset;
     }
 }
 
@@ -122,6 +126,10 @@ body {
     display: grid;
     height: 100vh;
     z-index: 20;
+}
+
+.mobilebar {
+    display: none!important;
 }
 
 .sidebar .sidebarElement {
@@ -297,9 +305,15 @@ body {
     justify-content: center;
     align-items: center;
     user-select: none;
+    width: 50%;
 }
 
-.logoText {
+.logo img {
+    width: 100%;
+}
+
+
+/* .logoText {
     position: relative;
 }
 
@@ -327,7 +341,7 @@ body {
 .logoImage {
     width: 10em;
     display: inline-block;
-}
+} */
 
 
 /* Home Cards */
@@ -385,12 +399,30 @@ body {
 }
 
 .homeCard h3 {
-    font-size: 1.2em;
+    font-size: 1em;
+    height: 23px;
 }
 
 .homeCard p {
     font-size: 0.5em;
     text-align: justify;
+}
+
+.homeCard p:first-of-type {
+    display: inline-block;
+    height: 96px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.homeCard p.expanded:first-of-type {
+    height: unset;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .homeCard .red,
@@ -406,6 +438,106 @@ body {
 
 .carousel {
     width: 70%;
+    height: 393px;
+    justify-content: flex-start;
+}
+
+.carouselElements {
+    width: 100%;
+    max-height: 85%;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.carouselElement {
+    border: 1px solid #5c1b1d;
+    display: none;
+    overflow: hidden;
+    transition: 0.4s;
+}
+
+.carouselElement.follow,
+.carouselElement.precede,
+.carouselElement.active {
+    display: block;
+}
+
+.carouselElement.active {
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 1);
+    transform: scale(2.2);
+    transform-origin: center center;
+    z-index: 10;
+    order: 0;
+}
+
+.carouselElement.follow,
+.carouselElement.precede {
+    transform: scale(1);
+}
+
+.carouselElement.follow {
+    order: 1;
+}
+
+.carouselElement.precede {
+    order: -1;
+}
+
+
+/* Arrows - Carousel */
+
+.arrow {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    margin-top: -20px;
+}
+
+.arrow .icon-container {
+    position: relative
+}
+
+.arrow .icon {
+    height: 0;
+    width: 0;
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 25px solid #ff4c4c;
+}
+
+.arrow.back {
+    left: -25px;
+}
+
+.arrow.next {
+    right: -25px;
+    transform: rotate(180deg);
+}
+
+
+/* 
+.carouselElement.follow {
+    order: 1;
+}
+
+.carouselElement.precede {
+    order: -1;
+} */
+
+.carouselElement img {
+    width: 100%;
+    height: 100%;
+    display: inline;
 }
 
 
@@ -414,10 +546,103 @@ body {
 @media (max-width: 997px) {
     /* Sidebar */
     .sidebar {
-        display: none;
+        display: block;
+        height: fit-content;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(10px) brightness(0.4);
+        z-index: 100;
+        transition: 0.4s;
+        overflow-y: auto;
+    }
+    .sidebar.disabled {
+        backdrop-filter: blur(0px) brightness(0);
+        opacity: 0;
+        z-index: -100;
+    }
+    .sidebar::before {
+        content: '';
+        display: block;
+        height: calc((2.5 * 1.7em));
+        width: 100%;
+    }
+    .sidebar .sidebarElement {
+        width: 100%;
+        height: unset;
+        padding: 0.7rem;
+    }
+    .sidebar .sidebarElement img {
+        height: 5%;
+    }
+    .mobilebar {
+        display: unset!important;
+    }
+    .sidebarElement.mobilebar {
+        display: block!important;
     }
     .accounts {
         display: none;
+    }
+    /* Navigation Bar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1020;
+        height: calc((2.5 * 1.7em));
+        width: 100%;
+        transition: 0.4s;
+    }
+    .navbar.scrolled {
+        background-color: rgb(73, 21, 21);
+        box-shadow: 1px 0px 9px 3px rgb(0 0 0 / 20%);
+    }
+    .navbar.toggled {
+        background-color: unset;
+        box-shadow: unset;
+    }
+    /* Code by W3Schools */
+    .sidebarButton {
+        display: inline-block;
+        cursor: pointer;
+        height: 100%;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        float: right;
+    }
+    .bar1,
+    .bar2,
+    .bar3 {
+        width: 35px;
+        height: 5px;
+        background-color: rgb(224, 224, 224);
+        margin: 3px 0;
+        transition: 0.4s;
+        border-radius: 5px;
+    }
+    .change .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+        transform: rotate(-45deg) translate(-9px, 6px);
+    }
+    .change .bar2 {
+        opacity: 0;
+    }
+    .change .bar3 {
+        -webkit-transform: rotate(45deg) translate(-8px, -8px);
+        transform: rotate(45deg) translate(-8px, -8px);
+    }
+    /* Navbrand */
+    .navbrand {
+        float: left;
+        width: 140px;
+        max-width: 30%;
+        opacity: 0;
+        transition: 0.4s;
+    }
+    .navbrand.enabled {
+        opacity: 1;
     }
     /* General Page */
     .page {
@@ -430,6 +655,11 @@ body {
         height: calc((2.5 * 1.7em));
         width: 100%;
     }
+    /* Logo */
+    .logo {
+        width: 100%;
+        margin-bottom: calc((1 * 1.7em));
+    }
     /* Cards */
     #about-card {
         justify-content: center;
@@ -437,6 +667,23 @@ body {
     }
     .homeCard {
         width: 100%
+    }
+    .homeCard-Image {
+        height: 260px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 996px) {
+    .homeCard-Image {
+        height: 130px;
+    }
+    /* Logo */
+    .logo {
+        width: 80%;
+        margin-bottom: calc((1 * 1.7em));
+    }
+    .navbrand {
+        width: 180px;
     }
 }
 

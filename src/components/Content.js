@@ -10,7 +10,6 @@ class Content extends React.Component {
         return (
             <main>
                 <Home content={this.props.pages[0]} defaultHeight={this.props.defaultHeight} />
-                <Pricing content={this.props.pages[2]} defaultHeight={this.props.defaultHeight} />
             </main>
         );
     }

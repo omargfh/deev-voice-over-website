@@ -1,8 +1,6 @@
 import React from "react";
 import Background from "../Background";
-import DeevLogo from "../DeevLogo";
-import HomeCard from "../HomeCard";
-import Carousel from "../Carousel";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,6 +9,9 @@ class Pricing extends React.Component {
   constructor(props) {
     super(props);
     this.ref = React.createRef();
+  }
+  componentDidMount(){
+    this.props.changePage(this.props.id);
   }
   render() {
     let content = this.props.content;
